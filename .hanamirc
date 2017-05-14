@@ -1,0 +1,4 @@
+project=hanami_auth_sample
+architecture=container
+test=rspec
+template=slim

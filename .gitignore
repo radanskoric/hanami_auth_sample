@@ -1,0 +1,6 @@
+/db/*.sqlite
+/public/assets*
+/tmp
+
+.ruby-version
+.ruby-gemset
