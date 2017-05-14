@@ -8,6 +8,9 @@ gem 'sqlite3'
 
 gem 'slim'
 
+gem "bcrypt"
+gem "warden"
+
 group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading

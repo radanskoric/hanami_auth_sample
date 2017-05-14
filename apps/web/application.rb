@@ -1,6 +1,8 @@
 require 'hanami/helpers'
 require 'hanami/assets'
 
+require_relative "../../lib/rack/warden"
+
 module Web
   class Application < Hanami::Application
     configure do
@@ -81,11 +83,16 @@ module Web
       #
       # See: http://www.rubydoc.info/gems/rack/Rack/Session/Cookie
       #
-      # sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']
+      sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']
 
       # Configure Rack middleware for this application
       #
-      # middleware.use Rack::Protection
+      middleware.use Warden::Manager do |manager|
+        manager.default_strategies :password
+        manager.failure_app = lambda do |env|
+          Web::Controllers::Session::New.new(login_failed_with: env["warden"].message).call(env)
+        end
+      end
 
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, defaults to :html

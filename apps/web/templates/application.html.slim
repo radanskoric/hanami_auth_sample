@@ -5,4 +5,11 @@ html
       | Web
     = favicon
   body
+    header
+      - if user_name
+        .user
+          = user_name
+        = form_for :session, routes.session_path, method: :delete do
+          = submit "Log Out"
+
     = yield

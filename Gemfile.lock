@@ -3,6 +3,7 @@ GEM
   specs:
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    bcrypt (3.1.11)
     capybara (2.14.0)
       addressable
       mime-types (>= 1.16)
@@ -159,6 +160,8 @@ GEM
     transproc (1.0.2)
     url_mount (0.2.1)
       rack
+    warden (1.2.7)
+      rack (>= 1.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -166,6 +169,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   capybara
   database_cleaner
   dotenv (~> 2.0)
@@ -177,6 +181,7 @@ DEPENDENCIES
   shotgun
   slim
   sqlite3
+  warden
 
 BUNDLED WITH
    1.14.6
